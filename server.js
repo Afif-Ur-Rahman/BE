@@ -9,7 +9,6 @@ const app = express();
 
 // Connection to MongoDb
 const PORT = 5000;
-// const db = "mongodb://localhost:27017/Demo";
 const db = "mongodb+srv://afifurrahman444:afif2017@cluster0.nmr1num.mongodb.net/MERNAppData?retryWrites=true&w=majority";
 mongoose
   .connect(db)
@@ -57,9 +56,6 @@ const verifyToken = (req, res, next) => {
   const token = req.header("Authorization") || false;
   if (!token) {
     res.redirect("/signup")
-    // return res
-    //   .status(401)
-    //   .json({ success: false, message: "Access denied. Token not provided." });
   }
   try {
     const decoded = jwt.verify(token, "afifurrahman");
@@ -73,7 +69,6 @@ const verifyToken = (req, res, next) => {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use("/userdata", verifyToken);
 
 // Sign Up Request
 app.post(
