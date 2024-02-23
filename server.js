@@ -85,13 +85,18 @@ app.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const { password } = req.body;
+      const { name, email, password } = req.body;
+      const existedUser = await signupUser.findOne({email})
+      if (existedUser) {
+        return res.status(400).json({message: "Email Already Registered", success: false})
+      }
+
       const hashedPass = await bcrypt.hash(password, 10);
 
       const newSignupUser = new signupUser({
         _id: req.body._id,
-        name: req.body.name,
-        email: req.body.email,
+        name,
+        email,
         password: hashedPass,
       });
 
