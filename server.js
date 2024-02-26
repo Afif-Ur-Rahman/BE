@@ -171,17 +171,7 @@ app.post(
 // Create/Submit Request
 app.post(
   "/submit",
-  [
-    body("name").isString().isLength({ min: 3 }),
-    body("email").isEmail(),
-    body("password").isLength({ min: 8 }),
-  ],
   (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
     const newUser = new user({
       _id: req.body._id,
       id: req.body.id,
