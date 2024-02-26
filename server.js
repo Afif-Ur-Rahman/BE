@@ -256,6 +256,6 @@ app.all("/update", async (req, res) => {
     res.json(data);
   } catch (error) {
     console.error(error);
-    res.status(500).send(chalk.red("Internal Server Error"));
+    res.status(500).send(chalk.red("Internal Server Errors"));
   }
 });
