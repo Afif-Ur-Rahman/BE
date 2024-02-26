@@ -9,7 +9,7 @@ const app = express();
 
 // Connection to MongoDb
 const PORT = 5000;
-const db = "mongodb://localhost:27017";
+const db = "mongodb+srv://afifurrahman444:afif2017@cluster0.nmr1num.mongodb.net/MERNAppData?retryWrites=true&w=majority";
 mongoose
   .connect(db)
   .then(() => {
