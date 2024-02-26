@@ -232,7 +232,8 @@ app.get("/userdata", verifyToken, async (req, res) => {
 // Delete All Request
 app.delete("/deleteAll", async (req, res) => {
   try {
-    const data = await user.deleteMany({});
+    const id = req.body.id
+    const data = await user.deleteMany({id: id});
     res.json(data);
   } catch (error) {
     console.error(error);
